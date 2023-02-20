@@ -1,0 +1,94 @@
+local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol"))()
+
+--[[SolarisLib:New({
+  Name - Title of the UI <string>
+  FolderToSave - Name of the folder where the UI files will be stored <string>
+})]]
+local win = SolarisLib:New({
+  Name = "Mic Up",
+  FolderToSave = "SolarisLibStuff"
+})
+
+--win:Tab(title <string>)
+local tab = win:Tab("Tab 1")
+
+--tab:Section(title <string>)
+local sec = tab:Section("Elements")
+
+--sec:Button(title <string>, callback <function>)
+sec:Button("Get Big", function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/goolride/scripts/main/big%20body"))()
+end)
+
+sec:Button("Big Head", function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/goolride/scripts/main/better%20bighead"))()
+end)
+
+
+--sec:Slider(title <string>,default <number>,max <number>,minimum <number>,increment <number>, flag <string>, callback <function>)
+local slider = sec:Slider("Slider", 16,200,0,1,"Slider", function(t)
+
+  print(t)
+  
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+    
+end)
+wait(0.5)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+--[[
+slider:Set(state <number>)
+]]
+
+
+local tab2 = win:Tab("Mind This")
+local sec2 = tab2:Section("Elements")
+Toggle2 = sec2:Toggle("This does nothing", false,"Toggle", function(t)
+
+
+
+  task.wait()
+  game.Players.LocalPlayer.Chatted:Connect(function(Message)
+if Message == ";re" or Message == "/e ;re" or Message == ";refresh" or Message == "/e ;refresh" then
+  OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+  wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
+task.wait(0.2)
+for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+if v.Name == "ProximityPrompt" then
+v.HoldDuration = 0
+fireproximityprompt(v,0)
+fireproximityprompt(v,1)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+
+end
+end
+end
+
+end)
+end)
+
+
+Toggle3 = sec2:Toggle("This does nothing", false,"Toggle", function(t)
+while t == false do
+  task.wait()
+if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+
+  task.wait()
+  OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+  wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
+task.wait(0.2)
+for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+if v.Name == "ProximityPrompt" then
+v.HoldDuration = 0
+fireproximityprompt(v,0)
+fireproximityprompt(v,1)
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+
+end
+end
+end
+end
+end)
