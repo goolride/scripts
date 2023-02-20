@@ -42,15 +42,16 @@ slider:Set(state <number>)
 
 local tab2 = win:Tab("Mind This")
 local sec2 = tab2:Section("Elements")
-Toggle2 = sec2:Toggle("This does nothing", false,"Toggle", function(t)
-
-
-
+Toggle2 = sec2:Toggle("This does nothing", true,"Toggle", function(t)
+while t == true and game:GetService('RunService').Heartbeat:Wait() do
   task.wait()
-  game.Players.LocalPlayer.Chatted:Connect(function(Message)
-if Message == ";re" or Message == "/e ;re" or Message == ";refresh" or Message == "/e ;refresh" then
+    if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") == nil then
+
+  game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+
+  
+  wait(0.5)
   OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-  wait(1)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
 task.wait(0.2)
 for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
@@ -60,35 +61,9 @@ fireproximityprompt(v,0)
 fireproximityprompt(v,1)
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
-
-end
-end
-end
-
-end)
-end)
-
-
-Toggle3 = sec2:Toggle("This does nothing", false,"Toggle", function(t)
-while t == false do
-  task.wait()
-if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-
-  task.wait()
-  OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-  wait(1)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
-task.wait(0.2)
-for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-if v.Name == "ProximityPrompt" then
-v.HoldDuration = 0
-fireproximityprompt(v,0)
-fireproximityprompt(v,1)
-
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
-
 end
 end
 end
 end
 end)
+
