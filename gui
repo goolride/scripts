@@ -45,25 +45,43 @@ local sec2 = tab2:Section("Elements")
 Toggle2 = sec2:Toggle("This does nothing", true,"Toggle", function(t)
 while t == true and game:GetService('RunService').Heartbeat:Wait() do
   task.wait()
-    if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") == nil then
+    if game.Players.LocalPlayer.Character.Parent == nil then
 
-  game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+      wait(4.5)
+      OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
+    task.wait(0.2)
+    for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+    if v.Name == "ProximityPrompt" then
+    v.HoldDuration = 0
+    fireproximityprompt(v,0)
+    fireproximityprompt(v,1)
+    
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+    end
+  end
+    else
+      if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") == nil then
 
-  
-  wait(0.5)
-  OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
-task.wait(0.2)
-for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-if v.Name == "ProximityPrompt" then
-v.HoldDuration = 0
-fireproximityprompt(v,0)
-fireproximityprompt(v,1)
-
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+        game.Players.LocalPlayer.Character:WaitForChild("Humanoid")
+      
+        
+        wait(0.5)
+        OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.49180603027344, 6.149373531341553, -64.16682434082031)
+      task.wait(0.2)
+      for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+      if v.Name == "ProximityPrompt" then
+      v.HoldDuration = 0
+      fireproximityprompt(v,0)
+      fireproximityprompt(v,1)
+      
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OldPos
+    end
+    end
 end
 end
-end
+
+
 end
 end)
-
